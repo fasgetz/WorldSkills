@@ -1,0 +1,77 @@
+﻿<Page x:Class="WorldSkills_Client.View.Common.SponsoredPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorldSkills_Client.View.Common"
+      mc:Ignorable="d" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      d:DesignHeight="670" d:DesignWidth="1024"
+      KeepAlive="False"
+      Title="SponsoredPage">
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="100" Background="#525252">
+                <Button Margin="50,0" Content="Назад" Width="100" Height="30" Click="GoBack_Click"/>
+                <Label Content="MARATHON SKILLS 2019" VerticalContentAlignment="Center" Foreground="White" FontSize="30"/>
+            </StackPanel>
+            <StackPanel Height="220">
+                <Label FontWeight="Bold" Content="Спонсор бегуна" FontSize="30" Margin="0, 30" Foreground="#656565"/>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Margin="50, 0" FontSize="24" Text="Пожалуйста выберите бегуна, которого вы хотели бы спонсировать и сумму, которую вы хотели бы спонсировать. Спасибо за вашу поддержку бегунов и их благотворительных учреждений."/>
+            </StackPanel>
+            <StackPanel Height="350" Orientation="Horizontal">
+                <StackPanel  HorizontalAlignment="Left" Height="350" Width="512">
+                    <Label FontWeight="Bold" Foreground="#656565" Content="Информация о спонсоре" FontSize="24" Width="512" />
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="Ваше имя"/>
+                        <TextBox Padding="10,0,0,0" FontSize="26" MaxLength="50" Width="362"/>
+                    </StackPanel>
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="Бегун"/>
+                        <ComboBox ItemsSource="{Binding RunnersList, Mode=TwoWay}" SelectionChanged="Cbrunners_Selected" x:Name="cbrunners" DisplayMemberPath="Email" Padding="10,0,0,0" FontSize="26" Width="362"/>
+                    </StackPanel>
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="Владелец карты"/>
+                        <TextBox Padding="10,0,0,0" FontSize="26" MaxLength="16" Width="362"/>
+                    </StackPanel>
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="Номер карты"/>
+                        <xctk:MaskedTextBox Padding="10,0,0,0" FontSize="26" Mask="0000 0000 0000 0000" VerticalContentAlignment="Bottom" MaxLength="50" Width="362"  HorizontalContentAlignment="Left"  />
+                    </StackPanel>
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="Срок действия"/>
+                        <TextBox Padding="10,0,0,0" FontSize="26" MaxLength="2" Width="60" Margin="0, 0, 20, 0"/>
+                        <TextBox Padding="10,0,0,0" FontSize="26" MaxLength="4" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                        <Label Width="150" Content="CVC"/>
+                        <TextBox Padding="10,0,0,0" FontSize="26" MaxLength="3" Width="70"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Height="350" Width="512">
+                    <Label Foreground="#656565" FontWeight="Bold" Content="Благотворительность" FontSize="24"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Фонд кошек" FontSize="24"/>
+                        <Image Margin="50, 0, 0, 0" Source="/Images/Helpers/AboutSponsor.png"/>
+                    </StackPanel>
+                    <Label Foreground="#656565" FontWeight="Bold" Content="Сумма пожертвования" FontSize="24"/>
+                    <Label x:Name="lbsum" Foreground="#656565" FontWeight="Bold" Content="$50" FontSize="44"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Content="-" Width="40" FontSize="30" FontWeight="Bold" Click="Minus_Click"/>
+                        <TextBox x:Name="tbval" PreviewTextInput="Tbsum_PreviewTextInput" FontSize="30" Foreground="#656565" MaxLength="4" Text="50" HorizontalContentAlignment="Center" Margin="20, 0" Width="100"/>
+                        <Button Content="+" Width="40" FontSize="30" FontWeight="Bold" Click="Plus_Click"/>
+                    </StackPanel>
+                    <StackPanel Margin="0, 20, 0, 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Command="{Binding MyCommand}" Margin="20, 0" Content="Заплатить" Width="150" Height="40" FontSize="24"/>
+                        <Button Command="{Binding MyCommand}" Content="Отмена" Width="150" Height="40" FontSize="24"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

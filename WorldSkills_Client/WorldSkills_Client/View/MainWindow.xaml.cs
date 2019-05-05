@@ -10,10 +10,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorldSkills_Client.View.Common;
 
-namespace WorldSkills_Client
+namespace WorldSkills_Client.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +23,9 @@ namespace WorldSkills_Client
         public MainWindow()
         {
             InitializeComponent();
+
+            content.Content = new MainPage(); // Главная страница
+            footer.Content = new TimerPage(); // Таймер
         }
     }
 }
